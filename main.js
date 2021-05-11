@@ -23,10 +23,15 @@ async function fetchRecipe(food) {
   const response = await fetch (`https://api.edamam.com/search?q=${food}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}`);
   const recipes = await response.json();
   console.log(recipes);
-  displayRecipes(recipes)
+  // displayRecipes(recipes)
 }
  fetchRecipe()
 
- function displayRecipes (recipe) {
-  let firstRecipe = document.querySelector("#recipe-label"); 
+ function displayRecipes () {
+  let list = document.querySelector("#recipe-label");
+    list.forEach(recipe => {
+    const element = document.createElement ("li");
+    element.innerText = recipe;
+    list.appendChild(element);
+  }); 
  }
